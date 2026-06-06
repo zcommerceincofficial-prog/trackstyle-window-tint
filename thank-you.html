@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Request Received | TrackStyle</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    :root {
+      --yellow:      #F5C100;
+      --yellow-hover:#E2AF00;
+      --black:       #0B0B0C;
+      --dark:        #0F0F11;
+      --card:        #161618;
+      --border:      #28282D;
+      --border-soft: #1E1E22;
+      --gray:        #8B8B92;
+      --light-gray:  #C9C9CF;
+      --white:       #FFFFFF;
+      --font-display:'Archivo Expanded', 'Archivo', sans-serif;
+      --font-body:   'Hanken Grotesk', system-ui, sans-serif;
+      --font-mono:   'Spline Sans Mono', ui-monospace, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      border-top: 3px solid var(--yellow);
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ::selection { background: var(--yellow); color: var(--black); }
+
+    header {
+      border-bottom: 1px solid var(--border-soft);
+      padding: 18px 28px;
+      display: flex;
+      justify-content: center;
+      background: rgba(11,11,12,0.98);
+    }
+    header img { height: 30px; width: auto; display: block; }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 20%, rgba(245,193,0,.07) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 50% 100%, rgba(245,193,0,.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 580px;
+      text-align: center;
+    }
+
+    .check-badge {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 32px;
+      background: rgba(245,193,0,.1);
+      border: 1px solid rgba(245,193,0,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .check-badge svg { width: 40px; height: 40px; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--yellow);
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 0.97;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    h1 span { color: var(--yellow); }
+
+    .msg {
+      font-size: 1.05rem;
+      color: var(--light-gray);
+      max-width: 440px;
+      margin: 0 auto 8px;
+      line-height: 1.7;
+    }
+    .msg strong { color: var(--white); }
+
+    .sub {
+      font-size: 0.88rem;
+      color: var(--gray);
+      margin-bottom: 44px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+    }
+
+    .phone-block {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 40px;
+      padding: 28px 40px;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--yellow);
+      text-align: left;
+    }
+    .phone-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .phone-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .phone-num:hover { color: var(--yellow); }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--black);
+      padding: 15px 28px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--yellow-hover); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--light-gray);
+      padding: 15px 28px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 24px 28px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      line-height: 1.9;
+    }
+    footer a { transition: color 0.2s; }
+    footer a:hover { color: var(--yellow); }
+
+    @media (max-width: 520px) {
+      .phone-num { font-size: 1.8rem; }
+      .phone-block { padding: 22px 24px; }
+      .actions { flex-direction: column; }
+      .actions a { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html">
+      <img src="https://trackstyles.com/wp-content/uploads/2025/08/cropped-track-style-logo-e1754691817135.webp" alt="TrackStyle">
+    </a>
+  </header>
+
+  <main>
+    <div class="card">
+
+      <div class="check-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F5C100" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+
+      <div class="eyebrow">Request Received</div>
+
+      <h1>THANK<br><span>YOU.</span></h1>
+
+      <p class="msg">We got your tint quote request — Aron will review it and get back to you within <strong>1 business day</strong>.</p>
+      <p class="sub">Keep an eye on your phone and email. Want to talk sooner?</p>
+
+      <div class="phone-block">
+        <span class="phone-kicker">Call Direct — Fastest Response</span>
+        <a href="tel:6024264506" class="phone-num">(602) 426-4506</a>
+      </div>
+
+      <div class="actions">
+        <a href="tel:6024264506" class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call (602) 426-4506
+        </a>
+        <a href="index.html" class="btn-ghost">
+          ← Back to Home
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 TrackStyle &nbsp;·&nbsp; 10201 N 21st Ave Suite 9, Phoenix AZ &nbsp;·&nbsp;
+    <a href="tel:6024264506">(602) 426-4506</a> &nbsp;·&nbsp;
+    <a href="mailto:sales@trackstyles.com">sales@trackstyles.com</a>
+  </footer>
+
+</body>
+</html>

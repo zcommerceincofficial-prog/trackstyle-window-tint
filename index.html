@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Tint Phoenix | TrackStyle</title>
+  <meta name="description" content="Professional window tinting in Phoenix, AZ. SunTek Evolve Carbon &amp; Ceramic film. Reject heat, block UV, add privacy. Free quote from TrackStyle.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --yellow:       #F5C100;
+      --yellow-hover: #E2AF00;
+      --yellow-deep:  #C99A00;
+      --black:        #0B0B0C;
+      --dark:         #0F0F11;
+      --card:         #161618;
+      --card-2:       #1C1C20;
+      --border:       #28282D;
+      --border-soft:  #1E1E22;
+      --gray:         #8B8B92;
+      --light-gray:   #C9C9CF;
+      --white:        #FFFFFF;
+      --font-display: 'Archivo Expanded', 'Archivo', sans-serif;
+      --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+      --font-mono:    'Spline Sans Mono', ui-monospace, monospace;
+      --max-w:        1200px;
+    }
+
+    /* ─── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      border-top: 3px solid var(--yellow);
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ::selection { background: var(--yellow); color: var(--black); }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 0.97;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    h1 { font-size: clamp(2.8rem, 7.5vw, 6.2rem); }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); letter-spacing: 0; }
+    .accent { color: var(--yellow); }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+    section { padding: 100px 0; position: relative; }
+
+    /* ─── SECTION LABEL ───────────────────────────────────── */
+    .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--yellow);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--black);
+      padding: 16px 32px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--yellow-hover); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      padding: 15px 30px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { border-color: var(--yellow); background: rgba(245,193,0,0.06); color: var(--yellow); }
+
+    .btn-pill-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--yellow);
+      padding: 9px 22px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(245,193,0,0.45);
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-pill-sm:hover {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--black);
+    }
+    .section-cta { text-align: center; margin-top: 48px; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(11,11,12,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .nav-logo img { height: 30px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 28px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/blue low rider.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      filter: brightness(0.26) saturate(0.7);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(11,11,12,0.95) 0%, rgba(11,11,12,0.65) 55%, rgba(11,11,12,0.2) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero h1 { margin-bottom: 24px; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--light-gray);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-left: 2px solid var(--border);
+    }
+    .hstat {
+      padding: 12px 28px;
+      border-right: 1px solid var(--border);
+    }
+    .hstat-num {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--yellow);
+      letter-spacing: -0.02em;
+    }
+    .hstat-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ─── TRUST BAR ───────────────────────────────────────── */
+    .trust-bar {
+      background: var(--dark);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 20px 28px;
+    }
+    .trust-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 28px;
+      border-right: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-gray);
+    }
+    .trust-item:first-child { border-left: 1px solid var(--border); }
+    .trust-item svg { color: var(--yellow); flex-shrink: 0; }
+
+    /* ─── BENEFITS ────────────────────────────────────────── */
+    .benefits { background: var(--dark); }
+    .section-head { margin-bottom: 64px; }
+    .section-head p {
+      font-size: 1.05rem;
+      color: var(--light-gray);
+      max-width: 560px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .benefit-card {
+      background: var(--card);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .benefit-card:hover { transform: translateY(-3px); }
+    .benefit-card:hover::before { transform: scaleX(1); }
+
+    .benefit-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(245,193,0,0.08);
+      border: 1px solid rgba(245,193,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .benefit-icon svg { color: var(--yellow); }
+    .benefit-card h3 { margin-bottom: 14px; color: var(--white); }
+    .benefit-card p { font-size: 0.93rem; color: var(--light-gray); line-height: 1.72; }
+    .benefit-stat {
+      margin-top: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border-top: 1px solid var(--border-soft);
+      padding-top: 16px;
+    }
+
+    /* ─── FILM SECTION ────────────────────────────────────── */
+    .film-section { background: var(--black); }
+    .film-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 56px;
+    }
+    .film-card {
+      background: var(--card);
+      padding: 48px 40px;
+      position: relative;
+    }
+    .film-card.featured {
+      border-top: 3px solid var(--yellow);
+    }
+    .film-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--yellow);
+      padding: 4px 12px;
+    }
+    .film-name {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+    .film-card h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); margin-bottom: 16px; }
+    .film-card p { font-size: 0.93rem; color: var(--light-gray); line-height: 1.72; margin-bottom: 28px; }
+
+    .film-specs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .film-specs li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--light-gray);
+      line-height: 1.5;
+    }
+    .film-specs li::before {
+      content: '✓';
+      color: var(--yellow);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .film-specs li.dim { color: var(--gray); }
+    .film-specs li.dim::before { color: var(--border); }
+
+    /* ─── GALLERY ─────────────────────────────────────────── */
+    .gallery { background: var(--dark); }
+
+    .showcase-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    /* Annotated showcase images — natural ratio, side by side */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .showcase-card {
+      overflow: hidden;
+      background: var(--card);
+    }
+    .showcase-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .showcase-card:hover img { transform: scale(1.02); }
+
+    /* Regular gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+    .gallery-item {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: var(--card);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    /* ─── PROCESS ─────────────────────────────────────────── */
+    .process { background: var(--black); }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .process-step {
+      background: var(--card);
+      padding: 44px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(245,193,0,0.07);
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      letter-spacing: -0.04em;
+    }
+    .step-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(245,193,0,0.08);
+      border: 1px solid rgba(245,193,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .step-icon svg { color: var(--yellow); }
+    .process-step h3 { font-size: 1rem; margin-bottom: 12px; letter-spacing: 0; }
+    .process-step p { font-size: 0.88rem; color: var(--light-gray); line-height: 1.68; position: relative; z-index: 1; }
+
+    /* ─── REVIEWS ─────────────────────────────────────────── */
+    .reviews { background: var(--dark); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .review-card {
+      background: var(--card);
+      padding: 36px 32px;
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .review-card:hover { border-top-color: var(--yellow); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars span { color: var(--yellow); font-size: 14px; }
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--light-gray);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; }
+    .review-text::after  { content: '\201D'; }
+    .review-author {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .review-author strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    /* ─── FORM ────────────────────────────────────────────── */
+    .form-section { background: var(--black); }
+    .form-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(245,193,0,0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .form-info h2 { margin-bottom: 20px; }
+    .form-info p {
+      font-size: 0.98rem;
+      color: var(--light-gray);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .form-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .form-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.9rem;
+      color: var(--light-gray);
+    }
+    .perk-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 48px 44px;
+    }
+    .form-card h3 {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      margin-bottom: 8px;
+      letter-spacing: 0;
+    }
+    .form-card .form-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 32px;
+    }
+    .form-row { margin-bottom: 16px; }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .form-row label, .form-row-2 label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 7px;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea,
+    .form-row-2 input,
+    .form-row-2 select {
+      width: 100%;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 13px 16px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus,
+    .form-row-2 input:focus,
+    .form-row-2 select:focus {
+      border-color: var(--yellow);
+    }
+    .form-row textarea { resize: vertical; min-height: 90px; }
+    .form-row select,
+    .form-row-2 select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B8B92' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-row select option, .form-row-2 select option { background: var(--dark); }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+      padding: 18px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--yellow-hover); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-note {
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-align: center;
+    }
+
+    /* ─── FAQ ─────────────────────────────────────────────── */
+    .faq { background: var(--dark); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 56px;
+    }
+    .faq-item {
+      background: var(--card);
+      padding: 36px 36px;
+      cursor: pointer;
+    }
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .faq-item[open] .faq-chevron {
+      background: var(--yellow);
+      border-color: var(--yellow);
+    }
+    .faq-item[open] .faq-chevron svg { color: var(--black); transform: rotate(180deg); }
+    .faq-chevron svg { color: var(--yellow); transition: transform 0.2s, color 0.2s; }
+    .faq-body {
+      font-size: 0.93rem;
+      color: var(--light-gray);
+      line-height: 1.75;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    /* ─── CTA BANNER ──────────────────────────────────────── */
+    .cta-banner {
+      background: var(--yellow);
+      padding: 80px 28px;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      color: var(--black);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+    .cta-banner p {
+      color: rgba(11,11,12,0.72);
+      font-size: 1rem;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-banner .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--black);
+      color: var(--yellow);
+      padding: 16px 36px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-banner .btn-dark:hover { background: #1a1a1c; }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border-soft);
+      padding: 36px 28px;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo img { height: 26px; width: auto; }
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-align: center;
+      line-height: 1.9;
+    }
+    .footer-copy a { transition: color 0.2s; }
+    .footer-copy a:hover { color: var(--yellow); }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .footer-links a:hover { color: var(--yellow); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .benefit-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .film-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .benefit-grid { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .footer-inner { justify-content: center; text-align: center; }
+      .footer-links { justify-content: center; }
+      .hstat { padding: 10px 16px; }
+    }
+
+    @media (max-width: 520px) {
+      .container { padding: 0 20px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 32px 24px; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-stats { display: none; }
+      .trust-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .trust-item:first-child { border-left: none; border-top: 1px solid var(--border); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="https://trackstyles.com" class="nav-logo">
+      <img src="https://trackstyles.com/wp-content/uploads/2025/08/cropped-track-style-logo-e1754691817135.webp" alt="TrackStyle">
+    </a>
+    <div class="nav-right">
+      <a href="#form-card" class="btn-pill-sm">Get a Free Quote</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="label">Window Tint — Phoenix, AZ</div>
+        <h1>KEEP THE<br><span class="accent">HEAT</span><br>OUT.</h1>
+        <p class="hero-sub">Phoenix hits 115°F. SunTek Evolve window tint rejects up to 66% of solar heat, blocks 99% of UV rays, and adds the dark, clean look your car deserves.</p>
+        <div class="hero-actions">
+          <a href="#form-card" class="btn-primary">
+            Get My Free Quote
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#gallery" class="btn-ghost">See Our Work</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat">
+            <div class="hstat-num">66%</div>
+            <div class="hstat-label">Solar Heat Rejected</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num">99%</div>
+            <div class="hstat-label">UV Rays Blocked</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num">1–2h</div>
+            <div class="hstat-label">Avg Install Time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        SunTek Evolve Certified
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Phoenix, AZ — 10201 N 21st Ave
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Arizona Legal Tint Compliance
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        5-Star Rated on Google
+      </div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="container">
+      <div class="section-head">
+        <div class="label">Why Get Tinted</div>
+        <h2>THREE REASONS<br><span class="accent">PHOENIX DRIVERS</span><br>TINT THEIR WINDOWS</h2>
+        <p>The sun here isn't a suggestion. The right tint does three things at once — and all three matter.</p>
+      </div>
+
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h3>Heat Rejection</h3>
+          <p>SunTek Ceramic film blocks up to 95% of infrared heat — the radiation you feel through glass. Your cabin stays significantly cooler, your A/C works less, and your car is more comfortable from the moment you get in.</p>
+          <div class="benefit-stat">Up to 66% total solar heat rejected</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>UV Protection</h3>
+          <p>Both Carbon and Ceramic tint block 99% of UV rays — protecting your skin on every daily drive and preventing your interior from fading, cracking, and drying out. Your dash, leather seats, and trim all last longer.</p>
+          <div class="benefit-stat">99% UV rejection — both film types</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23" stroke-width="1.8"/></svg>
+          </div>
+          <h3>Privacy &amp; Look</h3>
+          <p>Dark tint gives you real privacy — clear visibility from inside, dark and clean from outside. It also adds an aggressive, finished look that makes any car look more intentional. Your build, done right.</p>
+          <div class="benefit-stat">Clean from every shade — 5% to 50% VLT</div>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#form-card" class="btn-pill-sm">
+          Get My Free Quote
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILM SELECTION -->
+  <section class="film-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="label">SunTek Evolve Film</div>
+        <h2>CHOOSE YOUR<br><span class="accent">FILM.</span></h2>
+        <p>Two tiers. Both built for Phoenix heat. We'll help you pick the right one for your car, your budget, and how you drive.</p>
+      </div>
+
+      <div class="film-grid">
+        <div class="film-card">
+          <div class="film-name">SunTek Evolve Carbon</div>
+          <h3>Carbon Tint</h3>
+          <p>Premium carbon construction with no metallic layer — meaning zero signal interference with your phone, GPS, or radio. Deep, consistent color with strong UV and heat protection. The right choice for most daily drivers.</p>
+          <ul class="film-specs">
+            <li>Blocks 99% of UV rays</li>
+            <li>Rejects up to 50% of solar heat</li>
+            <li>No metallic layer — zero signal interference</li>
+            <li>Deep, non-reflective tint appearance</li>
+            <li>Available in 5% to 50% VLT shades</li>
+            <li class="dim">Infrared rejection (not included — see Ceramic)</li>
+          </ul>
+        </div>
+
+        <div class="film-card featured">
+          <div class="film-badge">Most Popular</div>
+          <div class="film-name">SunTek Evolve Ceramic</div>
+          <h3>Ceramic Tint</h3>
+          <p>The highest-performing film we offer. Nano-ceramic technology rejects up to 95% of infrared heat while maintaining crystal-clear optical quality. Built for Phoenix summers, luxury vehicles, and anyone who wants the best.</p>
+          <ul class="film-specs">
+            <li>Blocks 99% of UV rays</li>
+            <li>Rejects up to 66% of total solar heat</li>
+            <li>Up to 95% infrared heat rejection</li>
+            <li>Superior optical clarity — no haze</li>
+            <li>No metallic layer — zero signal interference</li>
+            <li>Available in 5% to 50% VLT shades</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#form-card" class="btn-pill-sm">
+          Not Sure Which One? Ask Us
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <div class="label">Our Work</div>
+        <h2>FRESH OUT OF<br>THE <span class="accent">SHOP.</span></h2>
+        <p>Every install is precision cut and bubble-free. Here's what leaves the bay.</p>
+      </div>
+
+      <!-- Annotated showcase images — displayed at natural aspect ratio -->
+      <div class="showcase-label">Featured Installs</div>
+      <div class="showcase-grid">
+        <div class="showcase-card">
+          <img
+            src="images/Turn these up with Ai.jpg"
+            alt="SunTek Evolve Tint on Lime Green Mercedes — TrackStyle Phoenix"
+            loading="lazy"
+          >
+        </div>
+        <div class="showcase-card">
+          <img
+            src="images/TUrn UP poor ad improve it.jpg"
+            alt="35% Ceramic Tint on White Nissan 370Z — TrackStyle Phoenix"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <!-- Clean tint photos -->
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img
+            src="images/TurnUP99.jpg"
+            alt="Deep tint on black Tesla — TrackStyle Phoenix"
+            loading="lazy"
+          >
+        </div>
+        <div class="gallery-item">
+          <img
+            src="images/blue low rider.jpg"
+            alt="Dark window tint on blue Infiniti G37 — TrackStyle Phoenix"
+            loading="lazy"
+          >
+        </div>
+        <div class="gallery-item">
+          <img
+            src="images/TURNUP18.jpg"
+            alt="Window tint on silver Infiniti Q50 — TrackStyle Phoenix"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#form-card" class="btn-pill-sm">
+          Get My Free Quote
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="container">
+      <div class="section-head">
+        <div class="label">How It Works</div>
+        <h2>IN AND OUT IN<br><span class="accent">A DAY.</span></h2>
+        <p>Most window tint jobs are done same day. Here's the process from quote to road.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <div class="step-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Free Quote</h3>
+          <p>Fill out the form. We'll review your vehicle and recommend the right film and shade for your budget and how you use your car.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <div class="step-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>Pick Your Film + Shade</h3>
+          <p>Carbon or Ceramic. 5% to 50% VLT. We'll walk you through every option — including what's legal in Arizona for front windows.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <div class="step-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Drop It Off</h3>
+          <p>Bring your car to our Phoenix shop. Most passenger vehicles are done in 1–2 hours. Larger SUVs and trucks may take a bit longer.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <div class="step-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Drive Protected</h3>
+          <p>Same-day pickup in most cases. Your SunTek film is warranted and built to last in Phoenix heat. Wait 3–5 days before rolling windows down.</p>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#form-card" class="btn-pill-sm">
+          Get My Free Quote
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <div class="container">
+      <div class="section-head">
+        <div class="label">Google Reviews</div>
+        <h2>WHAT PHOENIX<br><span class="accent">DRIVERS</span> SAY.</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">Amazing experience with TrackStyle. They did a full wrap on my car. The quality and attention to detail are top-notch. Thank you!</p>
+          <div class="review-author">
+            <strong>Erik Montoya</strong>
+            Google Review
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">Best service in AZ! Highly recommend this shop for anyone looking to protect their vehicle. Aron will take care of it.</p>
+          <div class="review-author">
+            <strong>Alan P.</strong>
+            Google Review
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">I decided to have my Tesla wrapped again due to being dissatisfied with the previous company's work. TrackStyle did a great job and made my car look brand new again. Great quality, and fantastic value! Will have them do my other cars for sure!</p>
+          <div class="review-author">
+            <strong>Donovan Hall</strong>
+            Google Review
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">TrackStyle wrapped my single cab Silverado and the finished job was amazing. All the corners were tucked well, all the ends were flat and professionally done. Not a single wrinkle I could find. Definitely will recommend to everyone interested in a wrap job!</p>
+          <div class="review-author">
+            <strong>Ben Rivera</strong>
+            Google Review
+          </div>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#form-card" class="btn-pill-sm">
+          Get My Free Quote
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section" id="form-section">
+    <div class="container">
+      <div class="form-wrap">
+
+        <div class="form-info">
+          <div class="label">Free Quote</div>
+          <h2>GET YOUR<br><span class="accent">TINT QUOTE.</span></h2>
+          <p>Tell us about your vehicle and we'll put together a quote. No pressure. Aron will reach out within 1 business day.</p>
+          <ul class="form-perks">
+            <li><span class="perk-dot"></span>Free consultation — no obligation</li>
+            <li><span class="perk-dot"></span>SunTek Carbon &amp; Ceramic options</li>
+            <li><span class="perk-dot"></span>5% to 50% VLT shades available</li>
+            <li><span class="perk-dot"></span>Arizona-legal front window tint</li>
+            <li><span class="perk-dot"></span>Same-day installs available</li>
+          </ul>
+        </div>
+
+        <div class="form-card" id="form-card">
+          <h3>Request a Free Quote</h3>
+          <div class="form-kicker">Window Tint — TrackStyle Phoenix</div>
+
+          <form id="tint-form" novalidate>
+            <div class="form-row-2">
+              <div>
+                <label for="f-name">Full Name *</label>
+                <input type="text" id="f-name" name="name" placeholder="First &amp; Last" required>
+              </div>
+              <div>
+                <label for="f-phone">Phone Number *</label>
+                <input type="tel" id="f-phone" name="phone" placeholder="(602) 000-0000" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="f-email">Email Address *</label>
+              <input type="email" id="f-email" name="email" placeholder="you@email.com" required>
+            </div>
+
+            <div class="form-row">
+              <label for="f-vehicle">Vehicle — Year, Make, Model *</label>
+              <input type="text" id="f-vehicle" name="vehicle" placeholder="e.g. 2022 Toyota Camry" required>
+            </div>
+
+            <div class="form-row-2">
+              <div>
+                <label for="f-film">Tint Type</label>
+                <select id="f-film" name="film">
+                  <option value="">Select Film</option>
+                  <option value="ceramic">Ceramic Tint</option>
+                  <option value="carbon">Carbon Tint</option>
+                  <option value="unsure">Not Sure — Help Me Choose</option>
+                </select>
+              </div>
+              <div>
+                <label for="f-shade">Preferred Shade</label>
+                <select id="f-shade" name="shade">
+                  <option value="">Select Shade</option>
+                  <option value="5">5% — Limo (Very Dark)</option>
+                  <option value="15">15% — Dark</option>
+                  <option value="20">20% — Medium-Dark</option>
+                  <option value="35">35% — Medium</option>
+                  <option value="50">50% — Light</option>
+                  <option value="unsure">Not Sure</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="f-message">Additional Notes (optional)</label>
+              <textarea id="f-message" name="message" placeholder="Anything else we should know about your vehicle or what you're looking for?"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Get My Free Quote →</button>
+            <p class="form-note">No spam. No pressure. Just a quote.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="label">FAQ</div>
+        <h2>COMMON<br><span class="accent">QUESTIONS.</span></h2>
+      </div>
+
+      <div class="faq-grid">
+        <details class="faq-item">
+          <summary>
+            What's the difference between Carbon and Ceramic tint?
+            <span class="faq-chevron">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Both block 99% of UV and give you a dark, clean appearance. The main difference is heat rejection. Ceramic uses nano-ceramic technology to reject up to 95% of infrared heat — the heat you feel through glass — while Carbon film offers solid protection at a lower price point. In Phoenix, the upgrade to Ceramic is often worth it.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            How long does installation take?
+            <span class="faq-chevron">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Most passenger sedans and coupes take 1–2 hours. Larger SUVs, trucks, or vehicles with complex rear window shapes may take a bit longer. We'll give you an accurate time estimate when you book. Most customers drop off and pick up same day.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            Will tint affect my phone signal, GPS, or radio?
+            <span class="faq-chevron">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            No. Both SunTek Evolve Carbon and Ceramic films are non-metallic, which means zero interference with your phone, GPS, toll transponder, or radio signals. This is one of the key advantages of the SunTek Evolve line over older metallic films.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            What's legal for window tint in Arizona?
+            <span class="faq-chevron">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Arizona law requires front side windows to allow at least 33% of light in (33% VLT minimum). Rear side windows and the rear windshield can be any darkness. We always make sure front windows are installed to stay within legal limits — and we'll walk you through your options before we start.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            How long before I can roll my windows down?
+            <span class="faq-chevron">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            We recommend waiting 3–5 days before rolling your windows down after installation. This gives the adhesive time to cure fully. In Phoenix heat, curing is typically faster than in colder climates. During that window, avoid washing your car and leave the windows up.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            Is tint covered under a warranty?
+            <span class="faq-chevron">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="faq-body">
+            Yes. SunTek Evolve film is backed by a manufacturer warranty against bubbling, peeling, fading, and delamination. Ask us about warranty coverage when you book — it varies by film tier.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>PHOENIX SUMMER<br>IS COMING.</h2>
+    <p>Stop cooking in your own car. Get SunTek Evolve tint installed at TrackStyle — same-day availability, free quote, no pressure.</p>
+    <a href="#form-card" class="btn-dark">
+      Get My Free Quote
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="https://trackstyles.com" class="footer-logo">
+        <img src="https://trackstyles.com/wp-content/uploads/2025/08/cropped-track-style-logo-e1754691817135.webp" alt="TrackStyle">
+      </a>
+      <div class="footer-copy">
+        &copy; 2025 TrackStyle &nbsp;·&nbsp; 10201 N 21st Ave Suite 9, Phoenix AZ &nbsp;·&nbsp;
+        <a href="tel:6024264506">(602) 426-4506</a> &nbsp;·&nbsp;
+        <a href="mailto:sales@trackstyles.com">sales@trackstyles.com</a>
+      </div>
+      <div class="footer-links">
+        <a href="../color-change/">Color Change Wraps</a>
+        <a href="https://trackstyles.com">Main Site</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('tint-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      const data = {
+        full_name: form.name.value,
+        phone:     form.phone.value,
+        email:     form.email.value,
+        vehicle:   form.vehicle.value,
+        film:      form.film.value,
+        shade:     form.shade.value,
+        message:   form.message.value,
+        source:    'TrackStyle Window Tint LP'
+      };
+
+      const WEBHOOK_URL = ''; // TODO: Replace with GHL webhook URL
+      if (WEBHOOK_URL) {
+        try {
+          await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+        } catch (_) {}
+      }
+
+      window.location.href = 'thank-you.html';
+    });
+  </script>
+
+</body>
+</html>
