@@ -831,6 +831,33 @@
       *, *::before, *::after { transition: none !important; animation: none !important; }
     }
   </style>
+
+  <!-- Google Ads Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17952693029"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17952693029');
+  </script>
+
+  <!-- Click-to-Call Conversion -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17952693029/d599CP25vLscEKW2wfBC',
+        'value': 1.0,
+        'currency': 'USD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
 </head>
 <body>
 
@@ -1337,7 +1364,7 @@
       </a>
       <div class="footer-copy">
         &copy; 2025 TrackStyle &nbsp;·&nbsp; 10201 N 21st Ave Suite 9, Phoenix AZ &nbsp;·&nbsp;
-        <a href="tel:6024264506">(602) 426-4506</a> &nbsp;·&nbsp;
+        <a href="tel:6024264506" onclick="return gtag_report_conversion('tel:6024264506')">(602) 426-4506</a> &nbsp;·&nbsp;
         <a href="mailto:sales@trackstyles.com">sales@trackstyles.com</a>
       </div>
       <div class="footer-links">
